@@ -10,6 +10,7 @@ public class Main {
 		engine.setScreen(new ExampleScreen(120, 120));
 		engine.setGame(new ExampleGame());
 		engine.start();
+		System.out.println("Started up");
 	}
 
 }
