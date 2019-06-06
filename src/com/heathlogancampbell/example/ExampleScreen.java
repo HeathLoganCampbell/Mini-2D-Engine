@@ -13,7 +13,9 @@ public class ExampleScreen extends Screen<ExampleGame>
 	@Override
 	public void render(ExampleGame game)
 	{
-		this.setPixel(0, 0, 0x0ff0ff);
+		this.clearScreen();
+		
+		this.setPixel(game.x, game.y, 0x0ff0ff);
 	}
 
 }
