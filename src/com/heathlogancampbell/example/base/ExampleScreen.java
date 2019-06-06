@@ -1,4 +1,4 @@
-package com.heathlogancampbell.example;
+package com.heathlogancampbell.example.base;
 
 import com.heathlogancampbell.miniengine.graphics.Screen;
 
