@@ -16,8 +16,7 @@ public class Screen<G extends Game> extends Bitmap
 	
 	public void render(G game)
 	{
-		for(int i = 0; i < this.width * this.height; i++)
-			this.pixels[i] = 0;
+		this.clearScreen();
 	
 		for(int i = 0; i < this.area; i++)
 		{

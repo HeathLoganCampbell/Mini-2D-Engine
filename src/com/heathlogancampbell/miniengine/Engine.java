@@ -61,9 +61,25 @@ public class Engine<G extends Game> extends Canvas implements Runnable
 		frame.setVisible(true);
 	}
 	
+	public int getScreenWidth()
+	{
+		return this.width;
+	}
+	
+	public int getScreenHeight()
+	{
+		return this.height;
+	}
+	
+	public int getScreenScale()
+	{
+		return this.scale;
+	}
+	
 	public synchronized void start()
 	{
 		if(running) return;
+		if(game == null) return;
 		this.running = true;
 		this.thread = new Thread(this);
 		this.thread.start();
