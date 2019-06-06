@@ -34,11 +34,11 @@ public class Main {
 
 	public static void main(String[] args) 
 	{
-    // creates a window with the size (120 * 5) x (120 * 5)
-    // The smaller the scale, the small the pixels will be
-    // making a higher resolution
+    		// creates a window with the size (120 * 5) x (120 * 5)
+    		// The smaller the scale, the small the pixels will be
+    		// making a higher resolution
 		Engine engine = new Engine<>(120, 120, 5);
-    //starts game loop
+    		//starts game loop
 		engine.start();
 	}
 }
@@ -65,7 +65,7 @@ public class ExampleScreen extends Screen<Game>
 	{
 		this.clearScreen();
 		//will place a pixel in the middle of the screen
-    //with the RGB colour 0x0ff0ff aka https://www.htmlcsscolor.com/hex/0FF0FF
+    		//with the RGB colour 0x0ff0ff aka https://www.htmlcsscolor.com/hex/0FF0FF
 		this.setPixel(this.width / 2, this.height / 2, 0x0ff0ff);
 	}
 
@@ -81,13 +81,13 @@ public class Main {
 
 	public static void main(String[] args) 
 	{
-    // creates a window with the size (120 * 5) x (120 * 5)
-    // The smaller the scale, the small the pixels will be
-    // making a higher resolution
+    		// creates a window with the size (120 * 5) x (120 * 5)
+    		// The smaller the scale, the small the pixels will be
+    		// making a higher resolution
 		Engine engine = new Engine<>(120, 120, 5);
-    //Adds screen of size of engine
-    engine.setScreen(new ExampleScreen(engine.getWidth(), engine.getHeight()));
-    //starts game loop
+   		//Adds screen of size of engine
+    		engine.setScreen(new ExampleScreen(engine.getWidth(), engine.getHeight()));
+    		//starts game loop
 		engine.start();
 	}
 }
