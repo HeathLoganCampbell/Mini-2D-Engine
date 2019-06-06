@@ -86,9 +86,12 @@ public class Main {
     		// making a higher resolution
 		Engine engine = new Engine<>(120, 120, 5);
    		//Adds screen of size of engine
-    		engine.setScreen(new ExampleScreen(engine.getWidth(), engine.getHeight()));
+    		engine.setScreen(new ExampleScreen(engine.getScreenWidth(), engine.getScreenHeight()));
     		//starts game loop
 		engine.start();
 	}
 }
 ```
+
+### Step 3: Adding State
+
