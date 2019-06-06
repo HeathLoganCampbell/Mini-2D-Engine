@@ -12,9 +12,7 @@ public class SnakeGame extends Game
 	
 	public SnakeGame()
 	{
-		this.level = new Level(120, 120);
-		
-		this.level.spawn(new Snake(this.level, new Location(5, 5)));
+		this.level = new Level(50, 50);
 	}
 	
 	@Override

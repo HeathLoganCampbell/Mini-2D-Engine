@@ -16,6 +16,8 @@ public class Snake extends Entity implements Tickable
 	
 	private Velocity velocity;
 	private ArrayList<SnakeTail> snakeTailParts;
+	
+	private int clock = 0;
 
 	public Snake(Level level, Location location) 
 	{
@@ -24,24 +26,28 @@ public class Snake extends Entity implements Tickable
 		this.velocity = new Velocity(0, 1);
 		this.snakeTailParts = new ArrayList<>();
 		
-		for(int i = 0; i < 20; i++)
-		{
-			Location loc = new Location(0,0);
-			loc.setLocation(location);
-			SnakeTail snailTail = new SnakeTail(level, loc);
-			this.getLevel().spawn(snailTail);
-			this.snakeTailParts.add(snailTail);
-		}
 	}
+	
+	public void growTail()
+	{
+		Location loc = new Location(0,0);
+		loc.setLocation(this.getLocation());
+		SnakeTail snailTail = new SnakeTail(this.getLevel(), loc);
+		this.getLevel().spawn(snailTail);
+		this.snakeTailParts.add(snailTail);
+	}
+
 	
 	public ArrayList<SnakeTail> getSnakeTailParts()
 	{
 		return this.snakeTailParts;
 	}
 
+
 	@Override
 	public void tick(InputListener inputListener)
 	{
+		if(this.clock++ % 3 != 0) return;
 		if(inputListener.isPressed(KeyEvent.VK_D))
 		{
 			velocity.setX(1);
@@ -74,5 +80,15 @@ public class Snake extends Entity implements Tickable
 				this.snakeTailParts.get(i).setLocation(this.snakeTailParts.get(i - 1).getLocation());
 		}
 		this.getLocation().addVelocity(velocity);
+		
+		if(this.getLocation().getX() < 0 || this.getLocation().getX() > this.getLevel().getWidth()
+				|| this.getLocation().getY() < 0 || this.getLocation().getY() >  this.getLevel().getHeight())
+			this.setDestroy(true);
+	}
+	
+	@Override
+	public void onDestroy()
+	{
+		this.snakeTailParts.forEach(snakeTail -> snakeTail.setDestroy(true));
 	}
 }

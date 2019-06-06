@@ -9,6 +9,7 @@ public class Entity
 	private Location location;
 	private Level level;
 	private int color;
+	private boolean destroy = false;
 	
 	public Entity(String name, Level level, Location location, int color)
 	{
@@ -16,6 +17,13 @@ public class Entity
 		this.level = level;
 		this.location = location;
 		this.color = color;
+	}
+	
+	public boolean hasCollision(Entity entity)
+	{
+		return entity.getLocation().getX() == this.getLocation().getX() &&
+				entity.getLocation().getY() == this.getLocation().getY();
+				
 	}
 	
 	public String getName()
@@ -45,5 +53,19 @@ public class Entity
 
 	public void setLevel(Level level) {
 		this.level = level;
+	}
+
+	public boolean isDestroy() {
+		return destroy;
+	}
+
+	public void setDestroy(boolean destroy) {
+		this.destroy = destroy;
+		onDestroy();
+	}
+	
+	public void onDestroy()
+	{
+		
 	}
 }
