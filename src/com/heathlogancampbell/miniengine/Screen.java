@@ -19,9 +19,10 @@ public class Screen extends Bitmap
 	
 	public void render(Game game)
 	{
-//		int x = (int) (Math.sin(System.currentTimeMillis()) * 100);
-//		int y = (int) (Math.cos(System.currentTimeMillis()) * 100);
-		this.draw(this.testBitmap, (this.width  - this.testBitmap.width) / 2 , (this.height  - this.testBitmap.height) / 2);
+		long now = System.currentTimeMillis();
+		int x = (int) (Math.sin((now % 2000) / 2000.0 * Math.PI * 2 ) * 40);
+		int y = (int) (Math.cos((now % 2000) / 2000.0 * Math.PI * 2) * 60);
+		this.draw(this.testBitmap, x + (this.width  - this.testBitmap.width) / 2 , y+ (this.height  - this.testBitmap.height) / 2);
 	}
 
 }
