@@ -11,33 +11,50 @@ import javax.swing.JFrame;
 
 import com.heathlogancampbell.miniengine.graphics.Screen;
 
-public class Engine extends Canvas implements Runnable
+public class Engine<G extends Game> extends Canvas implements Runnable
 {
-	private static final int WIDTH = 160
-						   , HEIGHT = 120
-						   , SCALE = 4;
+	private static final long serialVersionUID = 1L;
+	
+	
 	
 	private boolean running;
 	private Thread thread;
+	private JFrame frame;
 	
-	private Screen screen;
-	private Game game;
+	private int width;
+	private int height;
+	private int scale;
+	
+	private Screen<G> screen;
+	private G game;
 	
 	private BufferedImage image;
 	private int[] pixels;
 	
-	public Engine()
+	public Engine(int width, int height, int scale)
 	{
-		Dimension dimesion = new Dimension(WIDTH * SCALE,HEIGHT * SCALE );
+		this.width = width;
+		this.height = height;
+		this.scale = scale;
+		
+		Dimension dimesion = new Dimension(this.width * this.scale, this.height * this.scale );
 		this.setPreferredSize(dimesion);
 		this.setMaximumSize(dimesion);
 		this.setMinimumSize(dimesion);
 		
-		this.screen = new Screen(WIDTH, HEIGHT);
-		this.game = new Game();
+//		this.screen = new Screen(this.width, this.height);
+//		this.game = new Game();
 		
-		this.image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+		this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
 		this.pixels = ((DataBufferInt) this.image.getRaster().getDataBuffer()).getData();
+	
+		this.frame = new JFrame("Engine");
+		frame.add(this);
+		frame.pack();
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 	
 	public synchronized void start()
@@ -72,16 +89,25 @@ public class Engine extends Canvas implements Runnable
 
 		this.screen.render(this.game);
 
-		for (int i = 0; i < WIDTH * HEIGHT; i++) {
+		for (int i = 0; i < this.width * this.height; i++) {
 			pixels[i] = screen.pixels[i];
 		}
 
 		Graphics g = bs.getDrawGraphics();
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.drawImage(this.image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
+		g.drawImage(this.image, 0, 0, this.width * this.scale, this.height * this.scale, null);
 		g.dispose();
 		bs.show();
 		
+	}
+	
+	public void setScreen(Screen<G> screen)
+	{
+		this.screen = screen;
+	}
+	
+	public void setGame(G game) {
+		this.game = game;
 	}
 	
 	@Override
@@ -133,19 +159,5 @@ public class Engine extends Canvas implements Runnable
 			}
 
 		}
-	}
-
-	public static void main(String[] args) 
-	{
-		JFrame frame = new JFrame("Engine");
-		Engine engine = new Engine();
-		frame.add(engine);
-		frame.pack();
-		frame.setResizable(false);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		
-		engine.start();
 	}
 }
