@@ -9,6 +9,8 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.heathlogancampbell.miniengine.graphics.Screen;
+
 public class Engine extends Canvas implements Runnable
 {
 	private static final int WIDTH = 160
@@ -88,9 +90,11 @@ public class Engine extends Canvas implements Runnable
 		int frames = 0;
 
 		double unprocessedSeconds = 0;
+		double fps = 60.0;
 		long lastTime = System.nanoTime();
-		double secondsPerTick = 1 / 60.0;
+		double secondsPerTick = 1 / fps;
 		int tickCount = 0;
+		long maxPassTime = 100000000;
 
 		requestFocus();
 
@@ -99,7 +103,7 @@ public class Engine extends Canvas implements Runnable
 			long passedTime = now - lastTime;
 			lastTime = now;
 			if (passedTime < 0) passedTime = 0;
-			if (passedTime > 100000000) passedTime = 100000000;
+			if (passedTime > maxPassTime) passedTime = maxPassTime;
 
 			unprocessedSeconds += passedTime / 1000000000.0;
 
@@ -110,7 +114,7 @@ public class Engine extends Canvas implements Runnable
 				ticked = true;
 
 				tickCount++;
-				if (tickCount % 60 == 0) {
+				if (tickCount % fps == 0) {
 					System.out.println(frames + " fps");
 					lastTime += 1000;
 					frames = 0;
