@@ -94,7 +94,91 @@ public class Main {
 ```
 
 ### Step 3: Adding State
+create a new class that extends game
+```
+import java.awt.event.KeyEvent;
 
+import com.heathlogancampbell.miniengine.Game;
+import com.heathlogancampbell.miniengine.inputs.InputListener;
+
+public class ExampleGame extends Game
+{
+	public int x = 0;
+	public int y = 0;
+	
+	@Override
+	public void tick(InputListener inputListener)
+	{	
+		//When D is pressed we go right...
+		if(inputListener.isPressed(KeyEvent.VK_D))
+		{
+			x += 1;
+		}
+		
+		//When A is pressed we go left...
+		if(inputListener.isPressed(KeyEvent.VK_A))
+		{
+			x -= 1;
+		}
+		
+		//When W is pressed we go Up... (up and down have to be revised)
+		if(inputListener.isPressed(KeyEvent.VK_W))
+		{
+			y -= 1;
+		}
+		
+		//When S is pressed we go Down... (up and down have to be revised)
+		if(inputListener.isPressed(KeyEvent.VK_S))
+		{
+			y += 1;
+		}
+	}
+}
+```
+
+go back to the screen class and update it
+```
+import com.heathlogancampbell.miniengine.graphics.Screen;
+
+//We add <ExampleGame> 
+public class ExampleScreen extends Screen<ExampleGame>
+{
+
+	public ExampleScreen(int width, int height) 
+	{
+		super(width, height);
+	}
+	
+	@Override
+	public void render(ExampleGame game) //We change Game to ExampleGame 
+	{
+		this.clearScreen();
+		//We can now use variables in the ExampleGame class :)
+		this.setPixel(game.x, game.y, 0x0ff0ff);
+	}
+
+}
+
+```
+
+Finally we update the bootstrap/starter/main class
+```
+import com.heathlogancampbell.miniengine.Engine;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+		Engine<ExampleGame> engine = new Engine<ExampleGame>(120, 120, 5);
+		engine.setScreen(new ExampleScreen(engine.getScreenWidth(), engine.getScreenHeight()));
+		engine.setGame(new ExampleGame());
+		engine.start();
+	}
+
+}
+```
+
+### Step 4: Done
 
 ## Demo Projects
 * none yet
