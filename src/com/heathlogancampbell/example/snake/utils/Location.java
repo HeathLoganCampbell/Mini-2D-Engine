@@ -26,6 +26,12 @@ public class Location
 		this.y = y;
 	}
 	
+	public void setLocation(Location location)
+	{
+		this.x = location.getX();
+		this.y = location.getY();
+	}
+	
 	public void addVelocity(Velocity velocity)
 	{
 		this.x += velocity.getX();
