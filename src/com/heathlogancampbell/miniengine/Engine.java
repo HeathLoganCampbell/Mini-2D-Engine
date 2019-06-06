@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.heathlogancampbell.miniengine.graphics.Screen;
+import com.heathlogancampbell.miniengine.inputs.InputListener;
 
 public class Engine<G extends Game> extends Canvas implements Runnable
 {
@@ -27,6 +28,7 @@ public class Engine<G extends Game> extends Canvas implements Runnable
 	
 	private Screen<G> screen;
 	private G game;
+	private InputListener inputListener;
 	
 	private BufferedImage image;
 	private int[] pixels;
@@ -42,8 +44,12 @@ public class Engine<G extends Game> extends Canvas implements Runnable
 		this.setMaximumSize(dimesion);
 		this.setMinimumSize(dimesion);
 		
-//		this.screen = new Screen(this.width, this.height);
-//		this.game = new Game();
+		inputListener = new InputListener();
+
+		addKeyListener(inputListener);
+		addFocusListener(inputListener);
+		addMouseListener(inputListener);
+		addMouseMotionListener(inputListener);
 		
 		this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
 		this.pixels = ((DataBufferInt) this.image.getRaster().getDataBuffer()).getData();
@@ -77,7 +83,7 @@ public class Engine<G extends Game> extends Canvas implements Runnable
 	}
 	
 	public void tick() {
-		game.tick();
+		game.tick(inputListener);
 	}
 	
 	public void render() {

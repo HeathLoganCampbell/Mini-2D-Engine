@@ -1,13 +1,9 @@
 package com.heathlogancampbell.miniengine.graphics;
 
-import java.util.Random;
-
 import com.heathlogancampbell.miniengine.Game;
 
 public class Screen<G extends Game> extends Bitmap
 {
-	private Bitmap testBitmap;
-
 	public Screen(int width, int height) {
 		super(width, height);		
 	}
