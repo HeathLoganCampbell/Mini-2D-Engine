@@ -48,8 +48,6 @@ public class Engine<G extends Game> extends Canvas implements Runnable
 
 		addKeyListener(inputListener);
 		addFocusListener(inputListener);
-		addMouseListener(inputListener);
-		addMouseMotionListener(inputListener);
 		
 		this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
 		this.pixels = ((DataBufferInt) this.image.getRaster().getDataBuffer()).getData();
