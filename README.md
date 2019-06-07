@@ -181,4 +181,7 @@ public class Main {
 ### Step 4: Done
 
 ## Demo Projects
-* none yet
+* [3D Tunnel](https://github.com/HeathLoganCampbell/Mini-2D-Engine/tree/master/src/com/heathlogancampbell/example/tunnel)
+* [XOR Pattern](https://github.com/HeathLoganCampbell/Mini-2D-Engine/tree/master/src/com/heathlogancampbell/example/xor)
+* [Snake](https://github.com/HeathLoganCampbell/Mini-2D-Engine/tree/master/src/com/heathlogancampbell/example/snake)
+* [Basic Keyinputs](https://github.com/HeathLoganCampbell/Mini-2D-Engine/tree/master/src/com/heathlogancampbell/example/base)
