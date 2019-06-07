@@ -16,7 +16,7 @@ public class TunnelScreen extends Screen<TunnelGame>
 		
 		for(int y = 0; y < textureHeight; y++)
 			for(int x = 0; x < textureWidth; x++)
-				texture[y][x] = (x * 256 / textureWidth) ^ (y * 256 / textureHeight);
+				texture[y][x] = (x * textureWidth / textureWidth) ^ (y * textureHeight / textureHeight);
 		
 		this.distanceTable = new int[this.height * 2][this.width * 2];
 		this.angleTable = new int[this.height * 2][this.width * 2];
