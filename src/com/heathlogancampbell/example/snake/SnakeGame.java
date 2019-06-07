@@ -1,8 +1,6 @@
 package com.heathlogancampbell.example.snake;
 
 import com.heathlogancampbell.example.snake.level.Level;
-import com.heathlogancampbell.example.snake.player.Snake;
-import com.heathlogancampbell.example.snake.utils.Location;
 import com.heathlogancampbell.miniengine.Game;
 import com.heathlogancampbell.miniengine.inputs.InputListener;
 
