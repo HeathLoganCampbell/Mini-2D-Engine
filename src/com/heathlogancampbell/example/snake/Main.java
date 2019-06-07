@@ -8,6 +8,7 @@ public class Main {
 		Engine<SnakeGame> engine = new Engine<SnakeGame>(50, 50, 10);
 		engine.setScreen(new SnakeScreen(engine.getScreenWidth(), engine.getScreenHeight()));
 		engine.setGame(new SnakeGame());
+		engine.setTitle("Snake");
 		engine.start();
 	}
 

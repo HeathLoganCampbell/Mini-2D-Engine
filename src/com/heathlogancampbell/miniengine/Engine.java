@@ -76,6 +76,11 @@ public class Engine<G extends Game> extends Canvas implements Runnable
 		return this.scale;
 	}
 	
+	public void setTitle(String title)
+	{
+		this.frame.setTitle(title);
+	}
+	
 	public synchronized void start()
 	{
 		if(running) return;
