@@ -10,9 +10,9 @@ public class DungeonGame extends Game
 {
 	public Map map;
 	
-	public DungeonGame()
+	public DungeonGame(int width, int height)
 	{
-		this.map = new Map(1);
+		this.map = new Map((int) (Math.random() * 100), width, height);
 	}
 	
 	@Override

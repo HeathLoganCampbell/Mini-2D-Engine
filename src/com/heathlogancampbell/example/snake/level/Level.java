@@ -22,6 +22,8 @@ public class Level implements Tickable
 	private int width;
 	private int height;
 	
+	private int score = 0;
+	
 	private Random random;
 	private Snake snake;
 	
@@ -51,6 +53,7 @@ public class Level implements Tickable
 		this.getSnake().growTail();
 		egg.setDestroy(true);
 		this.eggsOnScreen--;
+		this.setScore(this.getScore() + 1);
 	}
 	
 	public void spawnEgg()
@@ -80,6 +83,7 @@ public class Level implements Tickable
 			int y = this.height / 2;
 			this.snake = new Snake(this, new Location(x, y));
 			this.spawn(this.snake);
+			setScore(0);
 		}
 	}
 
@@ -93,5 +97,13 @@ public class Level implements Tickable
 
 	public int getHeight() {
 		return height;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

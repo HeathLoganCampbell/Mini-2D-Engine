@@ -6,6 +6,7 @@ import com.heathlogancampbell.miniengine.inputs.InputListener;
 
 public class SnakeGame extends Game 
 {
+	
 	public Level level;
 	
 	public SnakeGame()
