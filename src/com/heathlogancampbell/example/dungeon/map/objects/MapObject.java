@@ -1,16 +1,24 @@
 package com.heathlogancampbell.example.dungeon.map.objects;
 
-public class MapObject
+import com.heathlogancampbell.example.dungeon.DungeonGame;
+import com.heathlogancampbell.example.dungeon.DungeonScreen;
+import com.heathlogancampbell.miniengine.utils.Renderable;
+
+public class MapObject implements Renderable<DungeonGame, DungeonScreen>
 {
+	private String name;
 	private int x, y;
 	private int width, height;
+	private int color;
 	
-	public MapObject(int x, int y, int width, int height) 
+	public MapObject(String name, int color, int x, int y, int width, int height) 
 	{
+		this.setName(name);
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.setColor(color);
 	}
 
 	public int getX() {
@@ -43,5 +51,26 @@ public class MapObject
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
+	
+	@Override
+	public void render(DungeonScreen screen, DungeonGame game)
+	{
 	}
 }

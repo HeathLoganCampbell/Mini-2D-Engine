@@ -16,9 +16,7 @@ public class DungeonScreen extends Screen<DungeonGame>
 	{
 		this.clearScreen();
 		
-		for(int y = 0; y < 40; y++)
-			for(int x = 0; x < 20; x++)
-				this.setPixel(x, y, 0xFFFFFF);
+		game.map.render(this, game);
 	}
 
 }
