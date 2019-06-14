@@ -180,6 +180,12 @@ public class Main {
 
 ### Step 4: Done
 
+## Trouble shooting
+* Make sure you have the latest jdk
+
+## Video
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MtS1OXnaWxI/0.jpg)](https://www.youtube.com/watch?v=MtS1OXnaWxI)
+
 ## Demo Projects
 * [3D Tunnel](https://github.com/HeathLoganCampbell/Mini-2D-Engine/tree/master/src/com/heathlogancampbell/example/tunnel)
 * [XOR Pattern](https://github.com/HeathLoganCampbell/Mini-2D-Engine/tree/master/src/com/heathlogancampbell/example/xor)
